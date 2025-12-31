@@ -1,51 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #0f172a;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #020617;
   color: #e5e7eb;
 }
 
-.container {
-  max-width: 900px;
-  margin: 80px auto;
-  padding: 40px;
-  background: #020617;
-  border-radius: 14px;
+/* HERO */
+.hero {
+  height: 100vh;
+  background: linear-gradient(135deg, #0ea5e9, #6366f1, #22c55e);
+  color: #020617;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
-h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+.hero h1 {
+  font-size: 64px;
+  margin: 0;
+}
+
+.hero h2 {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.hero p {
+  font-size: 20px;
+  max-width: 600px;
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.section.alt {
+  background: #020617;
+}
+
+.section h3 {
+  font-size: 36px;
+  margin-bottom: 30px;
   color: #38bdf8;
 }
 
-h2 {
-  font-weight: normal;
-  color: #94a3b8;
-  margin-bottom: 25px;
-}
-
-p {
+.section p {
   font-size: 18px;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
-.skills {
-  margin-top: 30px;
-}
-
+/* SKILLS */
 .skills span {
   display: inline-block;
-  background: #1e293b;
-  padding: 10px 16px;
-  margin: 6px;
-  border-radius: 20px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  padding: 12px 18px;
+  margin: 8px;
+  border-radius: 25px;
   font-size: 14px;
 }
 
-footer {
-  margin-top: 40px;
+/* TIMELINE */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #020617;
+  border: 1px solid #1e293b;
+  padding: 25px;
+  border-radius: 14px;
+}
+
+.card h4 {
+  margin: 0;
+  font-size: 22px;
+  color: #22c55e;
+}
+
+.card span {
   font-size: 14px;
-  color: #64748b;
+  color: #94a3b8;
+}
+
+.card p {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 14px;
+  color: #94a3b8;
 }
