@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap");
 
 /* ================= RESET ================= */
 * {
@@ -9,38 +9,41 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background: #020617;
-  color: #e5e7eb;
+  background: #05070c; /* true neutral dark */
+  color: #e6e8ec;
   overflow-x: hidden;
 }
 
-/* ================= GLOBAL MOTION LAYER ================= */
+/* ================= COSMIC MOTION BACKDROP ================= */
+/* NASA-style subtle space drift */
 body::before,
 body::after {
   content: "";
   position: fixed;
-  inset: -50%;
-  background: linear-gradient(
-    120deg,
-    rgba(56,189,248,0.25),
-    rgba(99,102,241,0.25),
-    rgba(34,197,94,0.25),
-    rgba(56,189,248,0.25)
-  );
-  animation: wave 22s linear infinite;
+  inset: -30%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.04), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(255,255,255,0.05), transparent 50%);
+  animation: spaceDrift 80s linear infinite;
   z-index: 0;
 }
 
 body::after {
-  animation-duration: 35s;
-  animation-direction: reverse;
+  animation-duration: 120s;
   opacity: 0.6;
 }
 
-@keyframes wave {
-  0% { transform: translateX(0) translateY(0); }
-  50% { transform: translateX(-25%) translateY(-15%); }
-  100% { transform: translateX(0) translateY(0); }
+@keyframes spaceDrift {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-6%, -4%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 /* ================= CONTENT LAYER ================= */
@@ -55,105 +58,116 @@ footer {
 
 /* ================= HERO ================= */
 .hero {
-  padding: 80px 60px 60px;
+  padding: 90px 70px 70px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .hero-content {
-  max-width: 650px;
-  animation: rise 1.2s ease forwards;
+  max-width: 720px;
+  animation: fadeUp 1.4s ease forwards;
 }
 
-@keyframes rise {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero h1 {
   font-family: "Playfair Display", serif;
-  font-size: 56px;
+  font-size: 60px;
+  letter-spacing: 0.3px;
 }
 
 .hero h2 {
+  margin-top: 6px;
   font-size: 22px;
   font-style: italic;
-  color: #38bdf8;
-  margin-top: 6px;
+  color: #9fb3c8; /* NASA muted blue */
 }
 
 .hero p {
-  margin-top: 14px;
+  margin-top: 18px;
   font-size: 16px;
-  opacity: 0.9;
+  line-height: 1.7;
+  color: #cfd6df;
 }
 
 /* ================= WHO I AM ================= */
 .who {
-  padding: 100px 60px;
+  padding: 120px 70px;
 }
 
 .who-content {
   max-width: 1100px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 80px;
 }
 
 .who-text {
+  padding: 48px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
   position: relative;
-  padding: 40px;
-  background: rgba(255,255,255,0.03);
-  border-radius: 20px;
-  overflow: hidden;
+  animation: fadeUp 1.6s ease forwards;
 }
 
-/* animated border */
-.who-text::before {
+/* subtle scanning light (NASA UI style) */
+.who-text::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 20px;
   background: linear-gradient(
     120deg,
-    transparent,
-    rgba(56,189,248,0.8),
-    transparent
+    transparent 20%,
+    rgba(255,255,255,0.06),
+    transparent 80%
   );
-  animation: borderFlow 4s linear infinite;
+  animation: scan 8s linear infinite;
+  pointer-events: none;
 }
 
-@keyframes borderFlow {
+@keyframes scan {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
 
 .who-text h3 {
   font-family: "Playfair Display", serif;
-  font-size: 40px;
-  margin-bottom: 20px;
+  font-size: 42px;
+  margin-bottom: 24px;
 }
 
 .who-text p {
   font-size: 18px;
   line-height: 1.9;
+  color: #d7dde6;
   position: relative;
   z-index: 1;
 }
 
 .who-text .sub {
-  margin-top: 16px;
+  margin-top: 18px;
   font-style: italic;
-  opacity: 0.85;
+  color: #aeb8c4;
 }
 
+/* CONTACT */
 .contact-links {
-  margin-top: 28px;
+  margin-top: 32px;
   display: flex;
-  gap: 30px;
+  gap: 36px;
 }
 
 .contact-links a {
-  color: #38bdf8;
+  color: #9fb3c8;
   text-decoration: none;
   font-weight: 500;
   position: relative;
@@ -165,8 +179,8 @@ footer {
   left: 0;
   bottom: -6px;
   width: 0;
-  height: 2px;
-  background: #38bdf8;
+  height: 1px;
+  background: #9fb3c8;
   transition: width 0.3s ease;
 }
 
@@ -176,96 +190,91 @@ footer {
 
 /* ================= SKILLS ================= */
 .skills-section {
-  padding: 100px 60px;
+  padding: 120px 70px;
   text-align: center;
 }
 
 .skills-section h3 {
   font-family: "Playfair Display", serif;
-  font-size: 36px;
-  margin-bottom: 50px;
+  font-size: 38px;
+  margin-bottom: 60px;
 }
 
 .skills-grid span {
   display: inline-block;
   margin: 14px;
-  padding: 16px 26px;
-  border-radius: 40px;
-  background: rgba(255,255,255,0.04);
-  animation: floatSkill 6s ease-in-out infinite;
+  padding: 16px 28px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #d9e0e8;
+  animation: microFloat 7s ease-in-out infinite;
 }
 
-.skills-grid span:nth-child(odd) {
-  animation-delay: 1.5s;
+.skills-grid span:nth-child(even) {
+  animation-delay: 2s;
 }
 
-@keyframes floatSkill {
+@keyframes microFloat {
   0% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  50% { transform: translateY(-10px); }
   100% { transform: translateY(0); }
 }
 
 /* ================= EXPERIENCE ================= */
 .experience {
-  padding: 120px 60px;
+  padding: 140px 70px;
 }
 
 .experience h3 {
   font-family: "Playfair Display", serif;
+  font-size: 40px;
   text-align: center;
-  font-size: 38px;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 46px;
 }
 
 .glass-card {
-  padding: 36px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.04);
-  animation: slowFloat 8s ease-in-out infinite;
+  padding: 40px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 22px;
+  animation: microFloat 9s ease-in-out infinite;
 }
 
-.glass-card:nth-child(2) {
-  animation-delay: 2s;
-}
-
-.glass-card:nth-child(3) {
-  animation-delay: 4s;
-}
-
-@keyframes slowFloat {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-18px); }
-  100% { transform: translateY(0); }
-}
+.glass-card:nth-child(2) { animation-delay: 2s; }
+.glass-card:nth-child(3) { animation-delay: 4s; }
 
 .glass-card h4 {
-  color: #22c55e;
+  font-size: 20px;
   margin-bottom: 8px;
+  color: #e6ebf2;
 }
 
 .glass-card span {
   font-size: 14px;
-  opacity: 0.8;
+  color: #aeb8c4;
 }
 
 .glass-card p {
-  margin-top: 16px;
+  margin-top: 18px;
   font-size: 16px;
   line-height: 1.7;
+  color: #cfd6df;
 }
 
 /* ================= FOOTER ================= */
 footer {
-  padding: 50px;
+  padding: 60px;
   text-align: center;
   font-size: 14px;
-  opacity: 0.8;
+  color: #aeb8c4;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -274,7 +283,7 @@ footer {
   .who,
   .skills-section,
   .experience {
-    padding: 60px 30px;
+    padding: 70px 32px;
   }
 
   .who-content {
