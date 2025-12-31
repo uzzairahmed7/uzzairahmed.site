@@ -14,58 +14,82 @@ body {
   overflow-x: hidden;
 }
 
-/* ================= AMBIENT MOTION LAYER ================= */
+/* ================= ALWAYS-ON MOTION (VISIBLE & CLASSY) ================= */
+
 .ambient {
   position: fixed;
-  inset: 0;
+  inset: -20%;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
 }
 
-/* soft floating light fields */
+/* glowing orbs */
 .ambient span {
   position: absolute;
-  width: 420px;
-  height: 420px;
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.45;
-  animation: drift 40s infinite linear;
+  background: radial-gradient(circle, rgba(56,189,248,0.45), transparent 65%);
+  animation: orbit 22s linear infinite;
+  mix-blend-mode: screen;
 }
 
-/* individual motion personalities */
+/* each orb has personality */
 .ambient span:nth-child(1) {
-  top: 10%;
-  left: 5%;
-  background: radial-gradient(circle, #38bdf8, transparent 65%);
-  animation-duration: 48s;
+  top: 20%;
+  left: 10%;
+  animation-duration: 28s;
 }
 
 .ambient span:nth-child(2) {
   top: 65%;
-  left: 15%;
+  left: 20%;
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, #22c55e, transparent 65%);
-  animation-duration: 60s;
+  background: radial-gradient(circle, rgba(34,197,94,0.4), transparent 65%);
+  animation-duration: 34s;
 }
 
 .ambient span:nth-child(3) {
-  top: 20%;
-  right: 10%;
-  background: radial-gradient(circle, #6366f1, transparent 65%);
-  animation-duration: 54s;
+  top: 15%;
+  right: 15%;
+  background: radial-gradient(circle, rgba(99,102,241,0.4), transparent 65%);
+  animation-duration: 30s;
 }
 
 .ambient span:nth-child(4) {
-  bottom: 5%;
-  right: 20%;
+  bottom: 10%;
+  right: 25%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, #0ea5e9, transparent 65%);
-  animation-duration: 70s;
+  background: radial-gradient(circle, rgba(14,165,233,0.45), transparent 65%);
+  animation-duration: 38s;
 }
+
+/* movement is CLEAR but SLOW */
+@keyframes orbit {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-120px, -80px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* keep content above motion */
+.hero,
+.who,
+.skills-section,
+.experience,
+footer {
+  position: relative;
+  z-index: 2;
+}
+
 
 @keyframes drift {
   0% {
